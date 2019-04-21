@@ -1,6 +1,5 @@
 <template>
   <section>
-    <Search/>
     <!--<NowPlaying v-if="showTrack" :nowPlaying="track" :isPlaying="isPlaying"/>-->
     <!-- <p v-if="!isConnected">
       😭 {{ $nuxt.layout && $nuxt.layout.authorName }} hasn't connected yet. 😭

@@ -63,6 +63,60 @@ export const mutations = {
   REQUEST_GET_ALBUMS_ERROR(state, error) {
     state.albumsIsLoading = false;
     state.albumsError = error;
+  },
+
+  /* ARTISTS */
+  REQUEST_GET_ARTISTS(state) {
+    state.artistsIsLoading = true;
+  },
+
+  REQUEST_GET_ARTISTS_SUCCESS(state, data) {
+    state.artistsIsLoading = false;
+    state.artists = {
+      ...data.artists,
+      items: [...state.artists.items, ...data.artists.items],
+    };
+  },
+
+  REQUEST_GET_ARTISTS_ERROR(state, error) {
+    state.artistsIsLoading = false;
+    state.artistsError = error;
+  },
+
+  /* PLAYLISTS */
+  REQUEST_GET_PLAYLISTS(state) {
+    state.playlistsIsLoading = true;
+  },
+
+  REQUEST_GET_PLAYLISTS_SUCCESS(state, data) {
+    state.playlistsIsLoading = false;
+    state.playlists = {
+      ...data.playlists,
+      items: [...state.playlists.items, ...data.playlists.items],
+    };
+  },
+
+  REQUEST_GET_PLAYLISTS_ERROR(state, error) {
+    state.playlistsIsLoading = false;
+    state.playlistsError = error;
+  },
+
+  /* TRACKS */
+  REQUEST_GET_TRACKS(state) {
+    state.tracksIsLoading = true;
+  },
+
+  REQUEST_GET_TRACKS_SUCCESS(state, data) {
+    state.tracksIsLoading = false;
+    state.tracks = {
+      ...data.tracks,
+      items: [...state.tracks.items, ...data.tracks.items],
+    };
+  },
+
+  REQUEST_GET_TRACKS_ERROR(state, error) {
+    state.tracksIsLoading = false;
+    state.tracksError = error;
   }
 }
 

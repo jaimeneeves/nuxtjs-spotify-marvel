@@ -1,19 +1,19 @@
 <template>
-  <!--<header>
-    <h1>
-      {{$nuxt.layout && $nuxt.layout.authorName}} {{ $nuxt.layout && $nuxt.layout.titleShort }}
-      <nuxt-link to="/auth" name="auth" aria-label="Login" :aria-current="isAuth"/>
-    </h1>
-  </header>-->
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">Your Spotify</h5>
+    <div class="my-0 mr-md-auto">
+      <Search/>
+    </div>
     <a class="btn btn-outline-primary" href="#">Sign up</a>
   </div>
 </template>
 
 <script>
+import Search from '~/components/Search.vue'
+
 export default {
-  props: ['isAuth']
+  props: ['isAuth'],
+  components: { Search }
 }
 </script>
 
