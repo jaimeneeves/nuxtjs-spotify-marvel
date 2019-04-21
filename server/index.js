@@ -3,7 +3,8 @@ const consola = require('consola')
 const axios = require('axios')
 const cache = require('./redis')
 const redis = require('async-redis')
-
+const authorization = require('./auth')
+const user = require('./user')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
@@ -33,29 +34,6 @@ function storageArgs(key, props) {
     expires
   ].filter(arg => Boolean(arg))
 }
-
-const getSpotifyToken = (props = {}) => 
-  axios({
-    method: 'post',
-    url: 'https://accounts.spotify.com/api/token',
-    params: {
-      client_id: process.env.SPOTIFY_CLIENT_ID,
-      client_secret: process.env.SPOTIFY_CLIENT_SECRET,
-      redirect_uri: `${process.env.CLIENT_URL}/api/spotify/callback`,
-      ...props
-    },
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  })
-
-const getUserData = access_token =>
-  axios.get(`${spotifyBaseUrl}me`, {
-    headers: {
-      withCredentials: true,
-      Authorization: `Bearer ${access_token}`
-    }
-  })
 
 async function setLastPlayed(access_token, item) {
   if (!Boolean(item)) {
@@ -87,9 +65,7 @@ async function getAccessToken() {
   const accessTokenObj = { value: await redisClient.get('access_token') }
   if (!Boolean(accessTokenObj.value)) {
     const refresh_token = await redisClient.get('refresh_token')
-    const {
-      data: { access_token, expires_in }
-    } = await getSpotifyToken({
+    const { data: { access_token, expires_in } } = await authorization.getSpotifyToken({
       refresh_token,
       grant_type: 'refresh_token'
     })
@@ -162,9 +138,9 @@ async function start() {
       const params = {
         code: code,grant_type: 'authorization_code'
       }
-      const { data }  = await getSpotifyToken(params)
+      const { data }  = await authorization.getSpotifyToken(params)
       const { access_token, refresh_token, expires_in } = data
-      const { data: { id } } = await getUserData(access_token)
+      const { data: { id } } = await user.getUserData(access_token)
 
       callStorage(...storageArgs('is_connected', { value: true }))
       callStorage(...storageArgs('refresh_token', { value: refresh_token }))
