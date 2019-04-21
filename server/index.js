@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const consola = require('consola')
 const axios = require('axios')
@@ -8,7 +10,9 @@ const user = require('./user')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
-require('dotenv').config()
+// Routers
+const searchRouter = require('./search/router')
+
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -93,6 +97,8 @@ async function start() {
     await nuxt.ready()
   }
 
+  app.use('/api', searchRouter)
+
   app.all('/api/spotify/data/:key', async ({ params: { key }, query }, res) => {
     try {
       if (key === ('refresh_token' || 'access_token'))
@@ -121,7 +127,6 @@ async function start() {
       const { data } = response
       setLastPlayed(access_token, data)
       const reply = await callStorage('get', 'last_played')
-      console.log('data ', data)
       res.send({
         item: JSON.parse(reply),
         is_playing: Boolean(data.is_playing),

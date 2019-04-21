@@ -29,6 +29,7 @@ export const mutations = {
     state.recentlyPlayed = recentlyPlayed
   }
 }
+
 export const actions = {
   async nuxtServerInit({ commit }, { req }) {
     try {
@@ -38,9 +39,8 @@ export const actions = {
       commit('connectionChange', is_connected)
 
       if (Boolean(is_connected)) {
-        const {
-          data: { item, is_playing }
-        } = await this.$axios.get(`${clientUrl}/api/spotify/now-playing`)
+        const nowPlaying = `${clientUrl}/api/spotify/now-playing` 
+        const { data: { item, is_playing } } = await this.$axios.get(nowPlaying)
         commit('nowPlayingChange', item)
         commit('isPlayingChange', is_playing)
       }

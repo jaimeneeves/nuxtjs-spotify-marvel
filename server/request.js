@@ -4,4 +4,4 @@ const spotifyApi = axios.create({
   baseURL: 'https://api.spotify.com/v1/'
 });
 
-module.exports = { spotifyApi }
+module.exports = spotifyApi
