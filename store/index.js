@@ -30,12 +30,10 @@ export const mutations = {
   }
 }
 export const actions = {
-  async nuxtServerInit({ commit }) {
+  async nuxtServerInit({ commit }, { req }) {
     try {
       const redisUrl = `${clientUrl}/api/spotify/data/`
-      const {
-        data: { is_connected }
-      } = await this.$axios.get(`${redisUrl}is_connected`)
+      const { data: { is_connected } } = await this.$axios.get(`${redisUrl}is_connected`)
 
       commit('connectionChange', is_connected)
 

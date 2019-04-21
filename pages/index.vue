@@ -1,68 +1,58 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        spotify-marvel
-      </h1>
-      <h2 class="subtitle">
-        My dazzling Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
+  <section>
+    <NowPlaying v-if="showTrack" :nowPlaying="track" :isPlaying="isPlaying"/>
+    <p v-if="!isConnected">
+      😭 {{ $nuxt.layout && $nuxt.layout.authorName }} hasn't connected yet. 😭
+      <a
+        href="http://twitter.com/codehitchhiker"
+      >Nudge her</a>
+    </p>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import NowPlaying from '~/components/NowPlaying.vue'
 
 export default {
-  components: {
-    Logo
+  components: { NowPlaying },
+  computed: {
+    showTrack() {
+      return this.isConnected && this.track
+    },
+    nowPlaying() {
+      if (Boolean(Object.keys(this.$store.state.nowPlaying).length !== 0)) {
+        this.$store.dispatch('updateConnection', true)
+        return this.$store.state.nowPlaying
+      }
+      return this.$store.state.recentlyPlayed
+    },
+    track() {
+      return this.nowPlaying
+    },
+    isPlaying() {
+      return this.$store.state.isPlaying
+    },
+    isConnected() {
+      return this.$store.state.isConnected
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style scoped>
+section {
+  min-width: 300px;
+  transform: translateY(-50%);
+  max-width: 750px;
+  margin: auto;
+  padding: 1em;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+@media (max-width: 600px) {
+  section {
+    transform: translateY(-10%) translateX(-2vw);
+    width: 65vw;
+    min-width: 200px;
+  }
 }
 </style>

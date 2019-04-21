@@ -35,11 +35,11 @@ export default {
     ) {
       window.location = this.spotifyUrl
     } else if (Boolean(Object.keys(this.query).length !== 0)) {
+      
       window.history.replaceState({}, document.title, window.location.pathname)
-      this.$store.commit(
-        'updateMessage',
-        this.query.success || this.query.error
-      )
+      
+      this.$store.commit('updateMessage', this.query.success || this.query.error )
+
       if (Boolean(this.query.success)) {
         this.$store.dispatch('updateConnection', true)
       }
