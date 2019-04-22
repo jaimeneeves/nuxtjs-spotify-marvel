@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2> Resultados de sua pesquisa </h2>
+    <h3> Resultados de sua pesquisa </h3>
     <template v-if="isTracksExists">
       <entity-header title="Tracks" small/>
 
@@ -71,8 +71,8 @@
   // import router from '@/router'
 
   import EntityHeader from '~/components/EntityHeader'
-  import MediaObject from '~/components/MediaObject'
-  // import MediaContainer from '@/components/MediaContainer'
+  import MediaObject from '~/components/spotify/MediaObject'
+  import MediaContainer from '~/components/spotify/MediaContainer'
   // import TracksList from '~/components/Tracks/TracksList'
 
   export default {
@@ -81,7 +81,7 @@
       // TracksList,
       MediaObject,
       EntityHeader,
-      // MediaContainer
+      MediaContainer
     },
 
     data() {

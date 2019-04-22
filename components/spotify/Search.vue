@@ -1,11 +1,10 @@
 <template>
-  <form class="form-inline">
+  <form>
     <input
       @focus="onFocus"
       @keyup="onKeyUp" class="form-control mr-sm-2"
       type="search"
-      placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      placeholder="Pesquisar..." aria-label="Search">
   </form>
 </template>
 

@@ -40,11 +40,10 @@
 </template>
 
 <script>
-import NowPlaying from '~/components/NowPlaying.vue'
 import Search from '~/components/spotify/Search.vue'
 
 export default {
-  components: { NowPlaying, Search },
+  components: { Search },
   computed: {
     isAuth() {
       return this.$route.name === 'auth'
@@ -71,7 +70,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

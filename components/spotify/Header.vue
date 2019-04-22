@@ -4,7 +4,7 @@
     <div class="my-0 mr-md-auto">
       <Search/>
     </div>
-    <a class="btn btn-outline-primary" href="#" @click="logout">Sair</a>
+    <a class="btn btn-primary" href="#" @click="logout">Sair</a>
   </div>
 </template>
 
