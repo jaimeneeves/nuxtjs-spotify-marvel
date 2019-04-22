@@ -21,21 +21,21 @@ export default {
       return this.$store.state.message
     }
   },
-  asyncData({ env: { spotifyId, clientUrl }, query }) {
+
+  async asyncData({ env: { spotifyId, clientUrl }, query }) {
     const spotifyUrl = `https://accounts.spotify.com/authorize?client_id=${spotifyId}&response_type=code&scope=user-read-currently-playing,user-read-recently-played&redirect_uri=${clientUrl}/api/spotify/callback`
     return {
       spotifyUrl,
       query
     }
   },
-  mounted() {
-    if (
-      !Boolean(this.query.success || this.query.error) &&
-      !Boolean(this.isConnected)
-    ) {
+  
+  mounted () {
+    if ( !Boolean(this.query.success || this.query.error) && !Boolean(this.isConnected)) {
+      console.log('here 1')
       window.location = this.spotifyUrl
     } else if (Boolean(Object.keys(this.query).length !== 0)) {
-      
+      console.log('here 1')
       window.history.replaceState({}, document.title, window.location.pathname)
       
       this.$store.commit('updateMessage', this.query.success || this.query.error )

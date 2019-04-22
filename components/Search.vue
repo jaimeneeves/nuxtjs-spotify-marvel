@@ -31,9 +31,7 @@
       },
 
       onKeyUp(e) {
-        const {
-          value,
-        } = e.target;
+        const { value, } = e.target;
 
         if (value !== '') {
           this.$router.replace({ name: "search-query", params: {query: value} });

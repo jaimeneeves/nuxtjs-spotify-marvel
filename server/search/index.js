@@ -1,23 +1,28 @@
 const request = require('../request')
 const cache = require('../redis')
+const authorization = require('../auth')
 
 async function getAccessToken() {
-  const redisClient = cache.connectToRedis()
-  const accessTokenObj = { value: await redisClient.get('access_token') }
-  if (!Boolean(accessTokenObj.value)) {
-    const refresh_token = await redisClient.get('refresh_token')
-    const { data: { access_token, expires_in } } = await authorization.getSpotifyToken({
-      refresh_token,
-      grant_type: 'refresh_token'
-    })
-    Object.assign(accessTokenObj, {
-      value: access_token,
-      expires: expires_in
-    })
-    callStorage(...storageArgs('access_token', { ...accessTokenObj }))
+  try {
+    const redisClient = cache.connectToRedis()
+    const accessTokenObj = { value: await redisClient.get('access_token') }
+    if (!Boolean(accessTokenObj.value)) {
+      const refresh_token = await redisClient.get('refresh_token')
+      const { data: { access_token, expires_in } } = await authorization.getSpotifyToken({
+        refresh_token,
+        grant_type: 'refresh_token'
+      })
+      Object.assign(accessTokenObj, {
+        value: access_token,
+        expires: expires_in
+      })
+      callStorage(...storageArgs('access_token', { ...accessTokenObj }))
+    }
+    redisClient.quit()
+    return accessTokenObj.value 
+  } catch (error) {
+    console.log('error', error.message)
   }
-  redisClient.quit()
-  return accessTokenObj.value
 }
 
 const Search = {

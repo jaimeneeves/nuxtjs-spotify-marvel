@@ -1,12 +1,13 @@
 <template>
   <section>
-    <!--<NowPlaying v-if="showTrack" :nowPlaying="track" :isPlaying="isPlaying"/>-->
-    <!-- <p v-if="!isConnected">
-      😭 {{ $nuxt.layout && $nuxt.layout.authorName }} hasn't connected yet. 😭
-      <a
-        href="http://twitter.com/codehitchhiker"
-      >Nudge her</a>
-    </p>-->
+    <div v-if="!isConnected">
+      <nuxt-link to="/auth"
+        class="btn btn-primary login-spotify"
+        name="auth" aria-label="Login"
+        :aria-current="!isAuth">
+        Login Spotify
+      </nuxt-link>
+    </div>
   </section>
 </template>
 
@@ -17,6 +18,9 @@ import Search from '~/components/Search.vue'
 export default {
   components: { NowPlaying, Search },
   computed: {
+    isAuth() {
+      return this.$route.name === 'auth'
+    },
     showTrack() {
       return this.isConnected && this.track
     },

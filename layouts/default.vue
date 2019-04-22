@@ -1,11 +1,9 @@
 <template>
   <div :class="rootClass">
-    <Header :isAuth="isAuth"/>
+    <Header :isAuth="isAuth" v-if="isConnected" />
     <section class="container">
       <nuxt/>
     </section>
-    <!-- <Footer/> -->
-    <!--<nuxt-link v-if="isAuth" class="area-close" aria-hidden="true" to="/" name="index"></nuxt-link>-->
   </div>
 </template>
 
@@ -18,11 +16,11 @@ export default {
   titleShort: 'is Listening',
   authorName: 'Jaime',
   computed: {
+    isConnected() {
+      return this.$store.state.isConnected
+    },
     isAuth() {
       return this.$route.name === 'auth'
-    },
-    ariaCurrent() {
-      return this.isAuth ? 'page' : false
     },
     rootClass() {
       return this.isAuth ? 'auth base' : 'base'
@@ -41,4 +39,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+</style>
 

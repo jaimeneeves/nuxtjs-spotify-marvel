@@ -1,6 +1,14 @@
-# spotify-marvel
+# Vue Spotify-Marvel
 
 > My dazzling Nuxt.js project
+
+
+## Tecnologias usadas
+
+1. Nuxtjs
+1. Vuejs
+2. Redis
+
 
 ## Build Setup
 
