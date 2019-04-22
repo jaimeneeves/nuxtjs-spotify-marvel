@@ -1,7 +1,7 @@
 <template>
   <div :class="rootClass">
     <Header :isAuth="isAuth" v-if="isConnected" />
-    <section class="container">
+    <section>
       <nuxt/>
     </section>
   </div>
