@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  only:
+  - master
+
+install:
+  - npm install
+  - npm run build
+
+script:
+  - echo "Skipping tests"
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: 7149cd12-03a9-4e23-abbb-b34ef5e10290
+  app: nuxtjs-spotify-marvel

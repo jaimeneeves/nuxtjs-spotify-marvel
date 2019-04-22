@@ -6,8 +6,10 @@
 ## Tecnologias usadas
 
 1. Nuxtjs
-1. Vuejs
-2. Redis
+2. Vuejs
+3. Redis
+4. Heroku
+5. Travis.CI
 
 
 ## Build Setup
