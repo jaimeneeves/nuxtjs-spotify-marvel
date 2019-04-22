@@ -2,20 +2,17 @@
   <div class="search-view">
     <div
       v-if="!query"
-      class="search-view__info"
-    >
+      class="search-view__info">
       Find your favorite songs, artists, albums and playlists.
     </div>
 
     <nav-view
       v-if="query"
-      :links="navLinks"
-    />
+      :links="navLinks"/>
 
     <div
       v-if="isNoResultVisible"
-      class="search-view__info"
-    >
+      class="search-view__info">
       No result found for <strong>"{{query}}"</strong>
       <div>
         Please make sure your words are spelled correctly or use less of different keywords.
