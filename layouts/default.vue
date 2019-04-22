@@ -8,11 +8,10 @@
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
+import Header from '~/components/spotify/Header.vue'
 
 export default {
-  components: { Header, Footer },
+  components: { Header },
   titleShort: 'is Listening',
   authorName: 'Jaime',
   computed: {
@@ -39,7 +38,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-</style>
-

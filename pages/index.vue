@@ -13,7 +13,7 @@
 
 <script>
 import NowPlaying from '~/components/NowPlaying.vue'
-import Search from '~/components/Search.vue'
+import Search from '~/components/spotify/Search.vue'
 
 export default {
   components: { NowPlaying, Search },
