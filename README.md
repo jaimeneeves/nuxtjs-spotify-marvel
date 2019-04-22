@@ -5,11 +5,15 @@
 
 ## Tecnologias usadas
 
-1. Nuxtjs
-2. Vuejs
-3. Redis
-4. Heroku
-5. Travis.CI
+
+| Tecnologia   | Descrição |
+|----------|:-------------:|
+| Nuxt.js |  Isomorphic Framework |
+| Vuejs |    JavaScript Framework |
+| Redis | Cache |
+| Heroku | Cloud Platform |
+| Travis.CI | Continuos Integration |
+
 
 
 ## Build Setup
