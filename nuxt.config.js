@@ -67,9 +67,6 @@ module.exports = {
   // serverMiddleware: [
   //   '~/api/index.js'
   // ],
-  server: {
-    port: process.env.PORT || 3000
-  },
   env: {
     spotifyId: process.env.SPOTIFY_CLIENT_ID,
     clientUrl: process.env.CLIENT_URL
