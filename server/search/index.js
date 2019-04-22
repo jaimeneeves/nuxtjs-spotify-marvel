@@ -1,10 +1,10 @@
 const request = require('../request')
-const cache = require('../redis')
+const redis = require('../redis')
 const authorization = require('../auth')
 
 async function getAccessToken() {
   try {
-    const redisClient = cache.connectToRedis()
+    const redisClient = redis.connectToRedis()
     const accessTokenObj = { value: await redisClient.get('access_token') }
     if (!Boolean(accessTokenObj.value)) {
       const refresh_token = await redisClient.get('refresh_token')
@@ -16,7 +16,7 @@ async function getAccessToken() {
         value: access_token,
         expires: expires_in
       })
-      callStorage(...storageArgs('access_token', { ...accessTokenObj }))
+      redis.callStorage(...redis.storageArgs('access_token', { ...accessTokenObj }))
     }
     redisClient.quit()
     return accessTokenObj.value 

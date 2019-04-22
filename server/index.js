@@ -58,7 +58,7 @@ async function setLastPlayed(access_token, item) {
 
 function postStoredTrack(props) {
   callStorage(
-    ...storageArgs('last_played', {
+    ...cache.storageArgs('last_played', {
       body: props
     })
   )
@@ -77,7 +77,7 @@ async function getAccessToken() {
       value: access_token,
       expires: expires_in
     })
-    callStorage(...storageArgs('access_token', { ...accessTokenObj }))
+    callStorage(...cache.storageArgs('access_token', { ...accessTokenObj }))
   }
   redisClient.quit()
   return accessTokenObj.value
@@ -105,7 +105,7 @@ async function start() {
       if (key === ('refresh_token' || 'access_token'))
         throw { error: '🔒 Cannot get protected stores. 🔒' }
       const { value } = query
-      const reply = await callStorage(...storageArgs(key, { value }))
+      const reply = await callStorage(...cache.storageArgs(key, { value }))
       res.send({ [key]: reply })
     } catch (err) {
       console.error(`\n🚨 There was an error at /api/spotify/data: ${err} 🚨\n`)
@@ -148,14 +148,9 @@ async function start() {
       const { access_token, refresh_token, expires_in } = data
       const { data: { id } } = await user.getUserData(access_token)
 
-      callStorage(...storageArgs('is_connected', { value: true }))
-      callStorage(...storageArgs('refresh_token', { value: refresh_token }))
-      callStorage(
-        ...storageArgs('access_token', {
-          value: access_token,
-          expires: expires_in
-        })
-      )
+      callStorage(...cache.storageArgs('is_connected', { value: true }))
+      callStorage(...cache.storageArgs('refresh_token', { value: refresh_token }))
+      callStorage(...cache.storageArgs('access_token', { value: access_token,expires: expires_in}))
 
       const success = '🎉 Welcome Back 🎉'
       res.redirect(`/auth?success=${success}`)
