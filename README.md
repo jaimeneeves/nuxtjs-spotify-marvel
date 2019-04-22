@@ -7,7 +7,7 @@
 
 
 | Tecnologia   | Descrição |
-|----------|:-------------:|
+|----------|-------------|
 | Nuxt.js |  Isomorphic Framework |
 | Vuejs |    JavaScript Framework |
 | Redis | Cache |
