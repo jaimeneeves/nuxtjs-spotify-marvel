@@ -32,10 +32,8 @@ export default {
   
   mounted () {
     if ( !Boolean(this.query.success || this.query.error) && !Boolean(this.isConnected)) {
-      console.log('here 1')
       window.location = this.spotifyUrl
     } else if (Boolean(Object.keys(this.query).length !== 0)) {
-      console.log('here 1')
       window.history.replaceState({}, document.title, window.location.pathname)
       
       this.$store.commit('updateMessage', this.query.success || this.query.error )

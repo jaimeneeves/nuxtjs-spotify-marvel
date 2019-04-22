@@ -1,24 +1,15 @@
 <template>
-  <div class="search-view">
-    <div
-      v-if="!query"
-      class="search-view__info"
-    >
-      Find your favorite songs, artists, albums and playlists.
+  <div class="container">
+    <div v-if="!query" class="search-view__info">
+      Encontre suas músicas, artistas, albuns e playlists favoritas.
     </div>
 
-    <nav-view
-      v-if="query"
-      :links="navLinks"
-    />
+    <nav-view v-if="query" :links="navLinks"/>
 
-    <div
-      v-if="isNoResultVisible"
-      class="search-view__info"
-    >
-      No result found for <strong>"{{query}}"</strong>
+    <div v-if="isNoResultVisible" class="search-view__info">
+      Nenhum registro para <strong>"{{query}}"</strong>
       <div>
-        Please make sure your words are spelled correctly or use less of different keywords.
+        Por favor, certifique-se de que suas palavras estão escritas corretamente ou use menos palavras-chave diferentes.
       </div>
     </div>
 

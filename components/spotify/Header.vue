@@ -4,16 +4,23 @@
     <div class="my-0 mr-md-auto">
       <Search/>
     </div>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <a class="btn btn-primary" href="#" @click="logout">Sair</a>
   </div>
 </template>
 
 <script>
-import Search from '~/components/Search.vue'
+import { mapGetters, mapActions } from 'vuex'
+import Search from '~/components/spotify/Search.vue'
 
 export default {
   props: ['isAuth'],
-  components: { Search }
+  components: { Search },
+  methods: {
+    logout: function () {
+      this.$store.dispatch('updateConnection', false)
+      this.$router.push('/select-server')
+    }
+  }
 }
 </script>
 

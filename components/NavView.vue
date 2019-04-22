@@ -8,8 +8,7 @@
         :to="item.to"
         exact tag="li"
         class="nav-view__nav-item"
-        active-class="nav-view__nav-item--active"
-      >
+        active-class="nav-view__nav-item--active">
         {{item.name}}
       </nuxt-link>
     </ul>
