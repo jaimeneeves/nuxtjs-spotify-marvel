@@ -1,6 +1,5 @@
 <template>
   <div :class="rootClass">
-    <Header :isAuth="isAuth" v-if="isConnected" />
     <section>
       <nuxt/>
     </section>
@@ -8,11 +7,8 @@
 </template>
 
 <script>
-import Header from '~/components/spotify/Header.vue'
 
 export default {
-  components: { Header },
-  titleShort: 'is Listening',
   authorName: 'Jaime',
   computed: {
     isConnected() {

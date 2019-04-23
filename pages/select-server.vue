@@ -16,7 +16,7 @@
             <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
             <div class="card-body">
               <p class="card-text">O Spotify é um serviço de streaming digital que dá acesso instantâneo a milhões de músicas, podcasts, vídeos e outros conteúdos de artistas de todo o mundo.</p>
-              <nuxt-link to="/auth"
+              <nuxt-link to="/spotify/auth"
                 class="btn btn-lg btn-block btn-primary"
                 name="auth" aria-label="Login">
                 Login Spotify
@@ -31,7 +31,7 @@
             <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
             <div class="card-body">
               <p class="card-text">A Marvel é o universo compartilhado onde ocorrem as histórias na maioria dos títulos de quadrinhos americanos e outras mídias publicadas pela Marvel Entertainment.</p>
-              <nuxt-link to="/auth"
+              <nuxt-link to="/marvel/auth"
                 class="btn btn-lg btn-block btn-primary"
                 name="auth" aria-label="Login">
                 Login Marvel

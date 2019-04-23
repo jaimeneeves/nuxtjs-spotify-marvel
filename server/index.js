@@ -153,12 +153,12 @@ async function start() {
       callStorage(...cache.storageArgs('access_token', { value: access_token,expires: expires_in}))
 
       const success = '🎉 Welcome Back 🎉'
-      res.redirect(`/auth?success=${success}`)
+      res.redirect(`/spotify/auth?success=${success}`)
     } catch (error) {
       console.error(
         `\n🚨 There was an error at /api/spotify/callback: ${error} 🚨\n`
       )
-      res.redirect(`/auth?message=${error}`)
+      res.redirect(`/spotify/auth?message=${error}`)
     }
   })
 

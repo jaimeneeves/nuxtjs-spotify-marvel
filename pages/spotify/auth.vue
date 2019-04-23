@@ -2,7 +2,7 @@
   <transition name="fade" mode="out-in">
     <section aria-live="polite">
       <nuxt-link
-        to="/"
+        to="/spotify"
         name="index"
         :aria-current="'/' === $nuxt.$route.path ? 'page' : false"
       >Close</nuxt-link>

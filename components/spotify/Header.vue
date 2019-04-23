@@ -13,7 +13,6 @@ import { mapGetters, mapActions } from 'vuex'
 import Search from '~/components/spotify/Search.vue'
 
 export default {
-  props: ['isAuth'],
   components: { Search },
   methods: {
     logout: function () {
