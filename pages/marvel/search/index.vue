@@ -27,7 +27,7 @@ export default {
   },
 
   computed: {
-    ...mapState('search', [
+    ...mapState('marvel/search', [
       'query',
       'result',
       'isLoading',

@@ -12,7 +12,7 @@ const app = express()
 
 // Routers
 const searchRouter = require('./search/router')
-
+const marvelRouter = require('./marvel/router')
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -99,6 +99,7 @@ async function start() {
   }
 
   app.use('/api', searchRouter)
+  app.use('/api/marvel', marvelRouter)
 
   app.all('/api/spotify/data/:key', async ({ params: { key }, query }, res) => {
     try {
@@ -116,8 +117,7 @@ async function start() {
   app.get('/api/spotify/now-playing/', async (req, res) => {
     try {
       const access_token = await getAccessToken()
-      const response = await axios.get(
-        `${spotifyBaseUrl}me/player/currently-playing?market=US`,
+      const response = await axios.get(`${spotifyBaseUrl}me/player/currently-playing?market=US`,
         {
           headers: {
             withCredentials: true,
@@ -172,4 +172,5 @@ async function start() {
     badge: true
   })
 }
+
 start()

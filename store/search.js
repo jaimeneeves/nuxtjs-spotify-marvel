@@ -141,11 +141,8 @@ export const actions = {
     dispatch('setSearchQuery', query);
 
     try {
-      
       // Request Api
-      // const response = await api.spotify.search.search(query);
       const response = await this.$axios.get(`${clientUrl}/api/search`, { params: {q: query} })
-      console.log('response ', response.data)
       
       dispatch('requestSearchSuccess', response.data)
     } catch (e) {

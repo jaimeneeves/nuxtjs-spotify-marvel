@@ -10,10 +10,10 @@ export const mutations = {
 }
 
 export const actions = {
-  getCharacters ({ commit }, name) {
-    return axios.get(`/v1/public/characters?limit=12&name=${name}`)
+  async getCharacters (queryString) {
+    return axios.get(`/v1/public/characters?limit=12&${queryString}`)
     .then(res => {
-      commit('setCharacters', res.data)
+      return res.data
     })
   }
 }
