@@ -1,8 +1,8 @@
 <template>
   <div :class="rootClass">
-    <section>
+    <div>
       <nuxt/>
-    </section>
+    </div>
   </div>
 </template>
 
