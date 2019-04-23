@@ -15,6 +15,9 @@ install:
 script:
   - echo "Skipping tests"
 
+env:
+  - CLIENT_URL=https://nuxtjs-spotify-marvel.herokuapp.com
+
 deploy:
   provider: heroku
   api_key:
