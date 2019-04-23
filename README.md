@@ -13,7 +13,7 @@
 | Redis | Cache |
 | Heroku | Cloud Platform |
 | Travis.CI | Continuos Integration |
-
+| Bootstrap-vue | Componentes Bootstrap |
 
 
 ## Build Setup

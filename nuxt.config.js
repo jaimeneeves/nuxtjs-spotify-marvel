@@ -64,9 +64,6 @@ module.exports = {
     extend(config, ctx) {
     }
   },
-  // serverMiddleware: [
-  //   '~/api/index.js'
-  // ],
   env: {
     spotifyId: process.env.SPOTIFY_CLIENT_ID,
     clientUrl: process.env.CLIENT_URL

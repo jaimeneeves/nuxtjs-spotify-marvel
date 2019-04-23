@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h3> Resultados de sua pesquisa </h3>
+    <!--<h4> Resultados de sua pesquisa </h4>-->
     <template v-if="isTracksExists">
       <entity-header title="Tracks" small/>
 
@@ -68,9 +68,8 @@
 
 <script>
   import {mapState} from 'vuex'
-  // import router from '@/router'
 
-  import EntityHeader from '~/components/EntityHeader'
+  import EntityHeader from '~/components/spotify/EntityHeader'
   import MediaObject from '~/components/spotify/MediaObject'
   import MediaContainer from '~/components/spotify/MediaContainer'
   // import TracksList from '~/components/Tracks/TracksList'
