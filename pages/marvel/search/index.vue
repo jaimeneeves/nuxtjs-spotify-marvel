@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container mt-3">
     <div v-if="!query">
-      Encontre suas músicas, artistas, albuns e playlists favoritas.
+      Encontre seus personagens e histórias em quandrinhos favoritas.
     </div>
 
     <div v-if="isNoResultVisible">
@@ -19,12 +19,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-// import NavView from '~/components/NavView'
 import LoadingSpinner from '~/components/LoadingSpinner'
 
 export default {
   components: {
-    // NavView
     LoadingSpinner
   },
 
@@ -34,18 +32,10 @@ export default {
       'result',
       'isLoading',
       'error',
-      'albumsIsLoading',
-      'artistsIsLoading',
-      'playlistsIsLoading',
-      'tracksIsLoading',
     ]),
 
     isLoadingData() {
-      return this.isLoading
-        || this.tracksIsLoading
-        || this.albumsIsLoading
-        || this.artistsIsLoading
-        || this.playlistsIsLoading;
+      return this.isLoading;
     },
 
     isTracksExists() {

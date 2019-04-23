@@ -3,9 +3,7 @@
     <section aria-live="polite">
       <nuxt-link
         to="/spotify"
-        name="index"
-        :aria-current="'/' === $nuxt.$route.path ? 'page' : false"
-      >Close</nuxt-link>
+        name="index" >Fechar</nuxt-link>
       {{message}}
     </section>
   </transition>
