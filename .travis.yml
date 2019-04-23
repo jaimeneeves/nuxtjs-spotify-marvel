@@ -14,9 +14,6 @@ script:
   - echo "Skipping tests"
 
 env:
-  - DB=postgres
-  - SH=bash
-  - PACKAGE_VERSION="1.0.*"
   - SPOTIFY_CLIENT_ID=7f16bf26fe8f4469b8e0fc0a210e7bfe
   - SPOTIFY_CLIENT_SECRET=721236387a6d4419bf4ac09191eae84f
   # - CLIENT_URL=http://localhost:3000
