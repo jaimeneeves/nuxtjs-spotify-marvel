@@ -18,69 +18,11 @@ const marvelRouter = require('./marvel/router')
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
-const spotifyBaseUrl = 'https://api.spotify.com/v1/'
-
 async function callStorage(method, ...args) {
   const redisClient = cache.connectToRedis()
   const response = await redisClient[method](...args)
   redisClient.quit()
   return response
-}
-
-function storageArgs(key, props) {
-  const { expires, body, value } = props
-  const val = Boolean(body) ? JSON.stringify(body) : value
-  return [
-    Boolean(val) ? 'set' : 'get',
-    key,
-    val,
-    Boolean(expires) ? 'EX' : null,
-    expires
-  ].filter(arg => Boolean(arg))
-}
-
-async function setLastPlayed(access_token, item) {
-  if (!Boolean(item)) {
-    const { data } = await axios.get(
-      `${spotifyBaseUrl}me/player/recently-played?market=US`,
-      {
-        headers: {
-          withCredentials: true,
-          Authorization: `Bearer ${access_token}`
-        }
-      }
-    )
-    postStoredTrack(data.items[0].track)
-  } else {
-    postStoredTrack(item.item)
-  }
-}
-
-function postStoredTrack(props) {
-  callStorage(
-    ...cache.storageArgs('last_played', {
-      body: props
-    })
-  )
-}
-
-async function getAccessToken() {
-  const redisClient = cache.connectToRedis()
-  const accessTokenObj = { value: await redisClient.get('access_token') }
-  if (!Boolean(accessTokenObj.value)) {
-    const refresh_token = await redisClient.get('refresh_token')
-    const { data: { access_token, expires_in } } = await authorization.getSpotifyToken({
-      refresh_token,
-      grant_type: 'refresh_token'
-    })
-    Object.assign(accessTokenObj, {
-      value: access_token,
-      expires: expires_in
-    })
-    callStorage(...cache.storageArgs('access_token', { ...accessTokenObj }))
-  }
-  redisClient.quit()
-  return accessTokenObj.value
 }
 
 async function start() {
@@ -111,31 +53,6 @@ async function start() {
     } catch (err) {
       console.error(`\n🚨 There was an error at /api/spotify/data: ${err} 🚨\n`)
       res.send(err)
-    }
-  })
-
-  app.get('/api/spotify/now-playing/', async (req, res) => {
-    try {
-      const access_token = await getAccessToken()
-      const response = await axios.get(`${spotifyBaseUrl}me/player/currently-playing?market=US`,
-        {
-          headers: {
-            withCredentials: true,
-            Authorization: `Bearer ${access_token}`
-          }
-        }
-      )
-      const { data } = response
-      setLastPlayed(access_token, data)
-      const reply = await callStorage('get', 'last_played')
-      res.send({
-        item: JSON.parse(reply),
-        is_playing: Boolean(data.is_playing),
-        progress_ms: data.progress_ms || 0
-      })
-    } catch (err) {
-      console.error(err)
-      res.send({ error: err.message })
     }
   })
 

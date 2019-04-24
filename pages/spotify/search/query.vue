@@ -126,7 +126,7 @@
       ]),
 
       isLoadingData() {
-      return this.isLoading;
+        return this.isLoading;
       },
 
       isTracksExists() {

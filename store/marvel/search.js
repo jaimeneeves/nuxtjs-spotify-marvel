@@ -26,6 +26,8 @@ export const mutations = {
     } else {
       state.seriesOrComics = false
     }
+
+    state.isLoading = false;
   },
 
   REQUEST_SEARCH_ERROR(state, error) {
