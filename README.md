@@ -60,6 +60,10 @@ $ cd redis-5.0.3
 $ sudo make install
 ```
 
+### Diagrama
+
+<img src="assets/diagrama.svg">
+
 ### Executando a Aplicação
 
 ```bash
