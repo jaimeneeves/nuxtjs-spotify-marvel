@@ -15,7 +15,6 @@
             <button type="button" @focus="onFocus" @click="onSearch" class="btn btn-primary btn-block">Pesquisar</button>
           </div>
         </div>
-
         <div class="row">
           <div class="col mt-3">        
             <b-form-group>

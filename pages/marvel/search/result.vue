@@ -1,5 +1,8 @@
 <template>
   <div class="container mt-5 mb-5">
+  
+    <loading-spinner  v-if="isLoadingData"/>
+
     <b-card-group columns>
       <b-card v-for="item in result" :key="item.id" v-if="result && !isSeriesOrComics"
         :title="item.name"
@@ -34,8 +37,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import LoadingSpinner from '~/components/LoadingSpinner'
 
 export default {
+  components: {  
+    LoadingSpinner
+  },
   computed: {
     ...mapState('marvel/search', [
       'query',
@@ -44,6 +51,10 @@ export default {
       'error',
       'seriesOrComics'
     ]),
+
+    isLoadingData() {
+      return this.isLoading;
+    },
     
     isSeriesOrComics() {
       return this.seriesOrComics

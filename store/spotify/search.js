@@ -171,7 +171,6 @@ export const actions = {
         const offset = albums.offset + albums.limit;
         
         // Request Api
-        // const response = await api.spotify.search.search(query, 'album', offset); 
         const response = await this.$axios.get(`${clientUrl}/api/search`)
 
         dispatch('requestGetAlbumsSuccess', response.data);

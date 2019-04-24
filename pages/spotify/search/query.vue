@@ -1,18 +1,28 @@
 <template>
-  <div class="container">
-    <!--<h4> Resultados de sua pesquisa </h4>-->
-    <template v-if="isTracksExists">
-      <entity-header title="Tracks" small/>
-
-      <!-- <tracks-list :tracks="getTracks"/> -->
+  <div class="container mb-5">
+    
+    <template>
+      <div class="row">
+        <div class="col mt-3">        
+          <b-form-group>
+            <b-form-radio-group
+              id="radio-group-1"
+              v-model="selected"
+              :options="options"
+              name="radio-options">
+            </b-form-radio-group>
+          </b-form-group>
+        </div>
+      </div>
     </template>
+    
+    <loading-spinner v-if="isLoadingData"/>
 
-    <template v-if="isPlaylistsExists">
-      <entity-header @click.native="goTo('search-playlist')" title="Playlists" small />
+    <template v-if="isPlaylistsExists && (selected=='playlists' || selected=='all')">
+      <entity-header title="Playlists" small />
       <media-container>
         <div class="row">
-          <media-object v-for="(playlist, index) in playlists.items"
-            v-if="index < maxResults"
+          <media-object v-for="(playlist, index) in playlists.items" v-if="index < maxResults"
             :key="playlist.id"
             :id="playlist.id"
             :uri="playlist.uri"
@@ -24,15 +34,13 @@
       </media-container>
     </template>
 
-    <template v-if="isAlbumsExists">
+    <template v-if="isAlbumsExists && (selected=='albums' || selected=='all')">
       <entity-header
-        @click.native="goTo('search-album')"
         title="Albums"
         small />
       <media-container>
         <div class="row">
-          <media-object v-for="(album, index) in albums.items"
-            v-if="index < maxResults"
+          <media-object v-for="(album, index) in albums.items" v-if="index < maxResults"
             :key="album.id"
             :id="album.id"
             :uri="album.uri"
@@ -44,9 +52,8 @@
       </media-container>
     </template>
 
-    <template v-if="isArtistsExists">
+    <template v-if="isArtistsExists && (selected=='artists' || selected=='all')">
       <entity-header
-        @click.native="goTo('search-artist')"
         title="Artists"
         small/>
       <media-container>
@@ -63,34 +70,51 @@
         </div>
       </media-container>
     </template>
+
+    <template v-if="isTracksExists && (selected=='traks' || selected=='all')">
+      <entity-header title="Músicas" small/>
+      <tracks-list :tracks="getTracks"/>
+    </template>
+      
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
 
   import EntityHeader from '~/components/spotify/EntityHeader'
   import MediaObject from '~/components/spotify/MediaObject'
   import MediaContainer from '~/components/spotify/MediaContainer'
-  // import TracksList from '~/components/Tracks/TracksList'
+  import LoadingSpinner from '~/components/LoadingSpinner'
+  import TracksList from '~/components/spotify/TracksList'
 
   export default {
 
     components: {
-      // TracksList,
+      TracksList,
       MediaObject,
       EntityHeader,
-      MediaContainer
+      MediaContainer,
+      LoadingSpinner
     },
 
     data() {
       return {
         maxResults: 12,
+        searchValue: '',
+        selected: 'all',
+        options: [
+          { value: 'all', html: '<span class="badge badge-pill badge-warning">Todos</span>' },
+          { value: 'playlists', html: '<span class="badge badge-pill badge-secondary">Playlists</span>' },
+          { value: 'albums', html: '<span class="badge badge-pill badge-primary">Albums</span>' },
+          { value: 'artists', html: '<span class="badge badge-pill badge-success">Artists</span>' },
+          { value: 'traks', html: '<span class="badge badge-pill badge-danger">Músicas</span>' }
+        ]
       }
     },
 
     computed: {
-      ...mapState('search', [
+      ...mapState('spotify/search', [
         'query',
         'result',
         'isLoading',
@@ -100,6 +124,10 @@
         'artists',
         'playlists',
       ]),
+
+      isLoadingData() {
+        return this.isLoading;
+      },
 
       isTracksExists() {
         return this.tracks && this.tracks.total > 0
