@@ -37,7 +37,6 @@ export const actions = {
       const { data: { is_connected } } = await this.$axios.get(`${redisUrl}is_connected`)
 
       commit('connectionChange', is_connected)
-
       // if (Boolean(is_connected)) {
       //   const nowPlaying = `${clientUrl}/api/spotify/now-playing` 
       //   const { data: { item, is_playing } } = await this.$axios.get(nowPlaying)

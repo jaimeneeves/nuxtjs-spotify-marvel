@@ -21,7 +21,7 @@ export default {
 
   methods: {
     ...mapActions({
-      search: 'search/search',
+      search: 'spotify/search/search',
     }),
 
     onFocus(e) {

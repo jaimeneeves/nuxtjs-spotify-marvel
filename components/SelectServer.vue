@@ -8,15 +8,14 @@
         </p>
       </div>
     </section>
-    
     <div class="container text-center mb-5">
-      <h4 class="lead text-muted">Visite-a clicando em um dos botões abaixo.</h4>
+      <h3 class="lead text-muted">Visite-a clicando em um dos botões abaixo.</h3>
     </div>
- 
     <section class="container">
       <div class="row justify-content-center">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
+        <div class="col-md-5">
+          <div class="card mb-4 shadow-lg">
+            <img src="~/assets/spotify.svg" class="mt-3" alt="Login spotify" style="height:194px">
             <div class="card-body">
               <p class="card-text">O Spotify é um serviço de streaming digital que dá acesso instantâneo a milhões de músicas, podcasts, vídeos e outros conteúdos de artistas de todo o mundo.</p>
               <nuxt-link to="/spotify/auth"
@@ -27,8 +26,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
+        <div class="col-md-5">
+          <div class="card mb-4 shadow-lg">
+            <img src="~/assets/marvel.svg" class="mt-3" alt="Login marvel" style="height:170px">
             <div class="card-body">
               <p class="card-text">A Marvel é o universo compartilhado onde ocorrem as histórias na maioria dos títulos de quadrinhos americanos e outras mídias publicadas pela Marvel Entertainment.</p>
               <nuxt-link to="/marvel"

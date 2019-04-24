@@ -15,12 +15,15 @@
         </div>
       </div>
     </template>
-    <!-- <template v-if="isTracksExists">
+
+    <template v-if="isTracksExists">
       <entity-header title="Tracks" small/>
 
       <tracks-list :tracks="getTracks"/>
-    </template> -->
+    </template>
     
+    <loading-spinner v-if="isLoadingData"/>
+
     <template v-if="isPlaylistsExists && (selected=='playlists' || selected=='all')">
       <entity-header title="Playlists" small />
       <media-container>
@@ -77,20 +80,22 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
 
   import EntityHeader from '~/components/spotify/EntityHeader'
   import MediaObject from '~/components/spotify/MediaObject'
   import MediaContainer from '~/components/spotify/MediaContainer'
-  // import TracksList from '~/components/Tracks/TracksList'
+  import LoadingSpinner from '~/components/LoadingSpinner'
+  import TracksList from '~/components/spotify/TracksList'
 
   export default {
 
     components: {
-      // TracksList,
+      TracksList,
       MediaObject,
       EntityHeader,
-      MediaContainer
+      MediaContainer,
+      LoadingSpinner
     },
 
     data() {
@@ -108,7 +113,7 @@
     },
 
     computed: {
-      ...mapState('search', [
+      ...mapState('spotify/search', [
         'query',
         'result',
         'isLoading',
@@ -118,6 +123,10 @@
         'artists',
         'playlists',
       ]),
+
+      isLoadingData() {
+      return this.isLoading;
+      },
 
       isTracksExists() {
         return this.tracks && this.tracks.total > 0

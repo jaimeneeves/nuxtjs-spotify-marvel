@@ -19,17 +19,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-// import NavView from '~/components/NavView'
 import LoadingSpinner from '~/components/LoadingSpinner'
 
 export default {
   components: {
-    // NavView
     LoadingSpinner
   },
 
   computed: {
-    ...mapState('search', [
+    ...mapState('spotify/search', [
       'query',
       'result',
       'isLoading',
