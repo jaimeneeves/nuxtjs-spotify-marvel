@@ -4,7 +4,7 @@
 
 > My dazzling Nuxt.js project
 
-### Porque escolhi o Nuxt.js ?
+## Porque escolhi o Nuxt.js ?
 
 Eu necessitava de um framework que me desse a flexibilidade para trabalhar nas duas layers (Front-End e Back-End). O Nuxt.js foi uma das muitas alternativas que encontrei para o meu propósito, eu o escolhi pela facilidade que o mesmo oferece na integração das duas camadas.
 
