@@ -1,4 +1,4 @@
-# Vue Spotify-Marvel
+#  <span style="color:grey">**NUXT**</span><span style="color:green">JS</span> Spotify-Marvel
 
 [![Build Status](https://travis-ci.org/dejaneves/nuxtjs-spotify-marvel.svg?branch=master)](https://travis-ci.org/dejaneves/nuxtjs-spotify-marvel)
 
