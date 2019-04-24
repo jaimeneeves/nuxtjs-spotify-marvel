@@ -43,13 +43,10 @@ MARVEL_KEY=<MARVEL_KEY>
 MARVEL_HASH=<MARVEL_HASH>
 ```
 
-`CLIENT_URL`
-
-O valor dessa variável é o `HOST` onde a aplicação está rodando.
-
-`REDIS_URL`
-
-O `HOST` onde está configurado seu servidor REDIS.
+| Key   | Descrição |
+|----------|-------------|
+| CLIENT_URL | **HOST** onde a aplicação está rodando |
+| REDIS_URL | **HOST** servidor REDIS |
 
 ## Tabela de Tecnologias Usadas
 
