@@ -14,9 +14,9 @@ Eu necessitava de um framework que me desse a flexibilidade para trabalhar nas d
 
 O Vue.js veio como consequência, o client (Front-End) do Nuxt.js trabalha com ele, e que por sinal é uma excelente tecnologia para desenvolvimento Front-End.
 
-### Library de Componentes Front-end
+### Library de Componentes Front-End
 
-Para os componentes da aplicação foram usados o [Bootstrap](https://getbootstrap.com/) e [Bootstrap-vue](https://bootstrap-vue.js.org/).
+Para os componentes da aplicação foram usados o **Bootstrap** e **Bootstrap-vue**.
 
 ### Cache
 
@@ -24,7 +24,7 @@ Para realizar o cache da aplicação foi usado o [REDIS](https://redis.io/downlo
 
 ### DevOps
 
-Foram usadas algumas ferramentas de DevOps como o [Travis.CI](https://travis-ci.org/) e o [Heroku](https://www.heroku.com/) plataforma Cloud onde roda a aplicação.
+Foram usadas algumas ferramentas de DevOps como o **Travis.CI** para integração contínua, e o **Heroku** como plataforma Cloud onde roda a aplicação.
 
 ## Configurações
 
@@ -54,13 +54,13 @@ MARVEL_HASH=<MARVEL_HASH>
 
 | Tecnologia   | Descrição |
 |----------|-------------|
-| Nuxt.js | Isomorphic Framework |
-| Vuejs | JavaScript Framework |
-| Bootstrap-vue | Componentes Front-End |
-| Bootstrap- | Componentes Front-End |
-| Redis | Cache |
-| Heroku | Cloud Platform |
-| Travis.CI | Continuos Integration |
+| [Nuxt.js](https://nuxtjs.org/) | Isomorphic Framework |
+| [Vuejs](https://vuejs.org/) | JavaScript Framework |
+| [Bootstrap-vue](https://bootstrap-vue.js.org/) | Componentes Front-End |
+| [Bootstrap](https://getbootstrap.com/) | Componentes Front-End |
+| [REDIS](https://redis.io/download) | Cache |
+| [Heroku](https://www.heroku.com/) | Cloud Platform |
+| [Travis.CI](https://travis-ci.org/) | Continuos Integration |
 
 ## Build Setup
 
