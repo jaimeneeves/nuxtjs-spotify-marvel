@@ -50,21 +50,19 @@ MARVEL_HASH=<MARVEL_HASH>
 | CLIENT_URL | **HOST** onde a aplicação está rodando |
 | REDIS_URL | **HOST** servidor REDIS |
 
-## Tabela de Tecnologias Usadas
+Caso você queira instalar um servidor **Redis** para teste.
 
-| Tecnologia   | Descrição |
-|----------|-------------|
-| [Nuxt.js](https://nuxtjs.org/) | Isomorphic Framework |
-| [Vuejs](https://vuejs.org/) | JavaScript Framework |
-| [Bootstrap-vue](https://bootstrap-vue.js.org/) | Componentes Front-End |
-| [Bootstrap](https://getbootstrap.com/) | Componentes Front-End |
-| [REDIS](https://redis.io/download) | Cache |
-| [Heroku](https://www.heroku.com/) | Cloud Platform |
-| [Travis.CI](https://travis-ci.org/) | Continuos Integration |
+```bash
+$ cd ../
+$ wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+$ tar xzf redis-5.0.3.tar.gz
+$ cd redis-5.0.3
+$ sudo make install
+```
 
-## Build Setup
+### Executando a Aplicação
 
-``` bash
+```bash
 
 # project clone
 $ git clone https://github.com/dejaneves/nuxtjs-spotify-marvel.git
@@ -85,3 +83,15 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Tabela de Tecnologias Usadas
+
+| Tecnologia   | Descrição |
+|----------|-------------|
+| [Nuxt.js](https://nuxtjs.org/) | Isomorphic Framework |
+| [Vuejs](https://vuejs.org/) | JavaScript Framework |
+| [Bootstrap-vue](https://bootstrap-vue.js.org/) | Componentes Front-End |
+| [Bootstrap](https://getbootstrap.com/) | Componentes Front-End |
+| [REDIS](https://redis.io/download) | Cache |
+| [Heroku](https://www.heroku.com/) | Cloud Platform |
+| [Travis.CI](https://travis-ci.org/) | Continuos Integration |
