@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mb-5">
     
     <template>
       <div class="row">
@@ -14,12 +14,6 @@
           </b-form-group>
         </div>
       </div>
-    </template>
-
-    <template v-if="isTracksExists">
-      <entity-header title="Tracks" small/>
-
-      <tracks-list :tracks="getTracks"/>
     </template>
     
     <loading-spinner v-if="isLoadingData"/>
@@ -76,6 +70,12 @@
         </div>
       </media-container>
     </template>
+
+    <template v-if="isTracksExists && (selected=='traks' || selected=='all')">
+      <entity-header title="Músicas" small/>
+      <tracks-list :tracks="getTracks"/>
+    </template>
+      
   </div>
 </template>
 
@@ -107,7 +107,8 @@
           { value: 'all', html: '<span class="badge badge-pill badge-warning">Todos</span>' },
           { value: 'playlists', html: '<span class="badge badge-pill badge-secondary">Playlists</span>' },
           { value: 'albums', html: '<span class="badge badge-pill badge-primary">Albums</span>' },
-          { value: 'artists', html: '<span class="badge badge-pill badge-success">Artists</span>' }
+          { value: 'artists', html: '<span class="badge badge-pill badge-success">Artists</span>' },
+          { value: 'traks', html: '<span class="badge badge-pill badge-danger">Músicas</span>' }
         ]
       }
     },

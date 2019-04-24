@@ -1,10 +1,22 @@
 <template>
   <div v-if="tracks" class="tracks-list">
-    
-    <div class="row">
-      
-      <div class="col-3" v-for="(item, index) in tracks" :key="index">
 
+    <b-card-group columns>
+
+      <b-card v-for="(item, index) in tracks" :key="index"
+        img-alt="Image"
+        img-top
+        tag="article"
+        style="max-width: 20rem;">
+        <b-card-text>
+          {{item.name}}
+        </b-card-text>
+      </b-card>
+  
+
+    </b-card-group>
+    
+      <!--<div class="col-3 mb-3" v-for="(item, index) in tracks" :key="index">
       <b-card no-body >
         <b-row no-gutters>
           <b-col md="6">
@@ -12,15 +24,27 @@
           </b-col>
           <b-col md="6">
             <b-card-body>
-              <b-card-text class="text-truncate">
-                {{item.name}}
+              <b-card-text>
+                <div class="text-truncate">{{item.name}}</div>
+
+                <span v-if="item.artists"> &nbsp;-&nbsp;
+                  <router-link
+                    class="tracks-list__link"
+                    v-for="(artist, index) in item.artists"
+                    :key="artist.id"
+                    :to="{name: 'artist', params:{id: artist.id}}">
+                  {{artist.name}}
+                  <template v-if="index !== (item.artists.length - 1)">,&nbsp;</template>
+                  </router-link>
+                </span>
               </b-card-text>
             </b-card-body>
           </b-col>
         </b-row>
       </b-card>
+      </div>-->
 
-      </div>
+
       <!--<div class="tracks-list__cell" v-if="item.album">
         <img class="tracks-list__img" :src="item.album.images[2].url" :alt="item.album.name"/>
       </div>-->
@@ -47,7 +71,6 @@
       <!--<div class="tracks-list__cell tracks-list__cell--duration">
         {{item.duration_ms | msToMinutes}}
       </div>-->
-    </div>
     
   </div>
 </template>
@@ -91,24 +114,7 @@
             return el.id;
           });
         }
-      },
-
-      onTrackUpdate() {
-        this.checkSavedTracks();
-      },
-
-    },
-
-    watch: {
-      tracks() {
-        this.fetchTrackIds();
-        this.checkSavedTracks();
       }
     }
   }
 </script>
-
-<style lang="scss">
-
-
-</style>
