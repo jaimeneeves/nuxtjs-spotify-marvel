@@ -6,7 +6,7 @@
 
 ## Porque escolhi o Nuxt.js ?
 
-Precisava de um framework que me desse a flexibilidade para trabalhar nas duas layers (Front-End e Back-End). O Nuxt.js foi uma das muitas alternativas que encontrei para o meu propósito, eu o escolhi pela facilidade que o mesmo oferece na integração das duas camadas.
+Eu necessitava de um framework que me desse a flexibilidade para trabalhar nas duas layers (Front-End e Back-End). O Nuxt.js foi uma das muitas alternativas que encontrei para o meu propósito, eu o escolhi pela facilidade que o mesmo oferece na integração das duas camadas.
 
 ## Vue.js
 
@@ -14,9 +14,17 @@ O Vue.js veio como consequência, o client (Front-End) do Nuxt.js trabalha com e
 
 ## Library de Componentes Front-end
 
-Para os componentes da aplicação foram usados o Bootstrap e Bootstrap-vue.
+Para os componentes da aplicação foram usados o [Bootstrap](https://getbootstrap.com/) e [Bootstrap-vue](https://bootstrap-vue.js.org/).
 
-## Tecnologias usadas
+## Cache
+
+Para realizar o cache da aplicação foi usado o [REDIS](https://redis.io/download).
+
+## DevOps
+
+Foram usadas algumas ferramentas de DevOps como o [Travis.CI](https://travis-ci.org/) e o [Heroku](https://www.heroku.com/) plataforma Cloud onde roda a aplicação.
+
+## Tabela de Tecnologias Usadas
 
 | Tecnologia   | Descrição |
 |----------|-------------|
