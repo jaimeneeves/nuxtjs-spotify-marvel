@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-3">
     <div v-if="!query">
       Encontre suas músicas, artistas, albuns e playlists favoritas.
     </div>

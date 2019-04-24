@@ -3,11 +3,16 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Spotify & Marvel</h1>
-        <p class="lead text-muted">Aplicativo em
-          <strong class="text-body">NUXT</strong><strong class="text-success">JS</strong> alimentado pelas APIs do Spotify e Marvel. Visite-o clicando em um dos botões abaixo.</p>
+        <p class="lead text-muted">Aplicação desenvolvida em 
+          <strong class="text-body">NUXT</strong><strong class="text-success">JS</strong> e alimentada pelas APIs do Spotify e Marvel.
+        </p>
       </div>
     </section>
-
+    
+    <div class="container text-center mb-5">
+      <h4 class="lead text-muted">Visite-a clicando em um dos botões abaixo.</h4>
+    </div>
+ 
     <section class="container">
       <div class="row justify-content-center">
         <div class="col-md-4">
@@ -15,7 +20,7 @@
             <div class="card-body">
               <p class="card-text">O Spotify é um serviço de streaming digital que dá acesso instantâneo a milhões de músicas, podcasts, vídeos e outros conteúdos de artistas de todo o mundo.</p>
               <nuxt-link to="/spotify/auth"
-                class="btn btn-lg btn-block btn-primary"
+                class="btn btn-lg btn-block btn-success"
                 name="auth" aria-label="Login">
                 Login Spotify
               </nuxt-link>
@@ -27,7 +32,7 @@
             <div class="card-body">
               <p class="card-text">A Marvel é o universo compartilhado onde ocorrem as histórias na maioria dos títulos de quadrinhos americanos e outras mídias publicadas pela Marvel Entertainment.</p>
               <nuxt-link to="/marvel"
-                class="btn btn-lg btn-block btn-primary"
+                class="btn btn-lg btn-block btn-danger"
                 name="auth" aria-label="Login">
                 Login Marvel
               </nuxt-link>

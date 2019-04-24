@@ -1,11 +1,17 @@
 <template>
-  <form>
-    <input
-      @focus="onFocus"
-      @keyup="onKeyUp" class="form-control mr-sm-2"
-      type="search"
-      placeholder="Pesquisar..." aria-label="Search">
-  </form>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <input
+            @focus="onFocus"
+            @keyup="onKeyUp" class="form-control mr-sm-2"
+            type="search"
+            placeholder="Pesquisar..." aria-label="Search">
+        </form>
+       </div>
+     </div>
+  </div>
 </template>
 
 <script>

@@ -1,18 +1,31 @@
 <template>
   <div class="container">
-    <!--<h4> Resultados de sua pesquisa </h4>-->
-    <template v-if="isTracksExists">
+    
+    <template>
+      <div class="row">
+        <div class="col mt-3">        
+          <b-form-group>
+            <b-form-radio-group
+              id="radio-group-1"
+              v-model="selected"
+              :options="options"
+              name="radio-options">
+            </b-form-radio-group>
+          </b-form-group>
+        </div>
+      </div>
+    </template>
+    <!-- <template v-if="isTracksExists">
       <entity-header title="Tracks" small/>
 
-      <!-- <tracks-list :tracks="getTracks"/> -->
-    </template>
-
-    <template v-if="isPlaylistsExists">
-      <entity-header @click.native="goTo('search-playlist')" title="Playlists" small />
+      <tracks-list :tracks="getTracks"/>
+    </template> -->
+    
+    <template v-if="isPlaylistsExists && (selected=='playlists' || selected=='all')">
+      <entity-header title="Playlists" small />
       <media-container>
         <div class="row">
-          <media-object v-for="(playlist, index) in playlists.items"
-            v-if="index < maxResults"
+          <media-object v-for="(playlist, index) in playlists.items" v-if="index < maxResults"
             :key="playlist.id"
             :id="playlist.id"
             :uri="playlist.uri"
@@ -24,15 +37,13 @@
       </media-container>
     </template>
 
-    <template v-if="isAlbumsExists">
+    <template v-if="isAlbumsExists && (selected=='albums' || selected=='all')">
       <entity-header
-        @click.native="goTo('search-album')"
         title="Albums"
         small />
       <media-container>
         <div class="row">
-          <media-object v-for="(album, index) in albums.items"
-            v-if="index < maxResults"
+          <media-object v-for="(album, index) in albums.items" v-if="index < maxResults"
             :key="album.id"
             :id="album.id"
             :uri="album.uri"
@@ -44,9 +55,8 @@
       </media-container>
     </template>
 
-    <template v-if="isArtistsExists">
+    <template v-if="isArtistsExists && (selected=='artists' || selected=='all')">
       <entity-header
-        @click.native="goTo('search-artist')"
         title="Artists"
         small/>
       <media-container>
@@ -86,6 +96,14 @@
     data() {
       return {
         maxResults: 12,
+        searchValue: '',
+        selected: 'all',
+        options: [
+          { value: 'all', html: '<span class="badge badge-pill badge-warning">Todos</span>' },
+          { value: 'playlists', html: '<span class="badge badge-pill badge-secondary">Playlists</span>' },
+          { value: 'albums', html: '<span class="badge badge-pill badge-primary">Albums</span>' },
+          { value: 'artists', html: '<span class="badge badge-pill badge-success">Artists</span>' }
+        ]
       }
     },
 
