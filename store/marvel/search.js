@@ -5,35 +5,47 @@ export const state = () => ({
   result: '',
   isLoading: false,
   error: null,
-  seriesOrComics: false,
+  type: '',
+
+  series: '',
+  characters: '',
+  comics: ''
 })
 
 export const mutations = {
   
   SET_SEARCH_QUERY(state, data) {
     state.query = data;
+    state.type = data.type;
   },
 
   REQUEST_SEARCH(state) {
     state.isLoading = true;
   },
 
-  REQUEST_SEARCH_SUCCESS(state, payload) {
-    state.result = payload.data.results
-
-    if(payload.type !== 'characters') {
-      state.seriesOrComics = true
-    } else {
-      state.seriesOrComics = false
-    }
-
-    state.isLoading = false;
-  },
-
   REQUEST_SEARCH_ERROR(state, error) {
     state.isLoading = false;
     state.error = error;
-  }
+  },
+
+  /* SERIES */
+  REQUEST_SERIES_SEARCH_SUCCESS(state, payload) {
+    state.series = payload
+    state.isLoading = false;
+  },
+
+  /* CHARACTERS */
+  REQUEST_CHARACTERS_SEARCH_SUCCESS(state, payload) {
+    state.characters = payload
+    state.isLoading = false;
+  },
+
+  /* COMICS */
+  REQUEST_COMICS_SEARCH_SUCCESS(state, payload) {
+    state.comics = payload
+    state.isLoading = false;
+  },
+
 }
 
 export const actions = {
@@ -46,8 +58,16 @@ export const actions = {
     commit('REQUEST_SEARCH')
   },
 
-  requestSearchSuccess({commit}, data) {
-    commit('REQUEST_SEARCH_SUCCESS', data)
+  requestSeriesSearchSuccess({commit}, data) {
+    commit('REQUEST_SERIES_SEARCH_SUCCESS', data)
+  },
+
+  requestCharactersSearchSuccess({commit}, data) {
+    commit('REQUEST_CHARACTERS_SEARCH_SUCCESS', data)
+  },
+
+  requestComicsSearchSuccess({commit}, data) {
+    commit('REQUEST_COMICS_SEARCH_SUCCESS', data)
   },
   
   requestSearchError({commit}, error) {
@@ -68,7 +88,19 @@ export const actions = {
       }
 
       const response = await this.$axios.get(`${clientUrl}/api/marvel/${params.type}`, args)
-      dispatch('requestSearchSuccess', { data: response.data.data, type: params.type })
+
+      if (params.type === 'series') {
+        dispatch('requestSeriesSearchSuccess', response.data.data)
+      }
+
+      if (params.type === 'characters') {
+        dispatch('requestCharactersSearchSuccess', response.data.data)
+      }
+
+      if (params.type === 'comics') {
+        dispatch('requestComicsSearchSuccess', response.data.data)
+      }
+      
     } catch (e) {
       console.log(e)
       dispatch('requestSearchError', e);

@@ -12,7 +12,7 @@
               placeholder="Pesquisar..." aria-label="Search">
           </div>
           <div class="col col-lg-2">
-            <button type="button" @focus="onFocus" @click="onSearch" class="btn btn-primary btn-block">Pesquisar</button>
+            <button type="button" @focus="onFocus" @click="onSearch" class="btn btn-danger btn-block">Pesquisar</button>
           </div>
         </div>
         <div class="row">
