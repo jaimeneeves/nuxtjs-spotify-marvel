@@ -1,1 +1,13 @@
-@import "./variables.scss"
+@import "./variables.scss";
+
+.marvel {
+  background: #222;
+  h1 {
+    &.main-title {
+      text-align: center;
+      font-size: 60px;
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}

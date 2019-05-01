@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-3">
+  <div class="container mt-3 text-white">
     <div v-if="!query">
       Encontre seus personagens e histórias em quandrinhos favoritas.
     </div>
@@ -9,9 +9,7 @@
       <p> Por favor, certifique-se de que suas palavras estão escritas corretamente ou use menos palavras-chave diferentes. </p>
     </div>
 
-    <loading-spinner v-if="isLoadingData"/>
-
-    <div class="search-view__content">
+    <div>
       <router-view/>
     </div>
   </div>
@@ -20,10 +18,12 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import LoadingSpinner from '~/components/LoadingSpinner'
+import Search from '~/components/marvel/Search.vue'
 
 export default {
+  layout: 'marvel',
   components: {
-    LoadingSpinner
+    LoadingSpinner, Search
   },
 
   computed: {

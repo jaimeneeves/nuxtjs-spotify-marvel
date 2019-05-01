@@ -1,8 +1,6 @@
 <template>
   <div :class="rootClass">
-    <div>
-      <nuxt/>
-    </div>
+    <nuxt/>
   </div>
 </template>
 
@@ -18,7 +16,7 @@ export default {
       return this.$route.name === 'auth'
     },
     rootClass() {
-      return this.isAuth ? 'auth base' : 'base'
+      return this.isAuth ? 'auth base' : this.$route.name
     }
   },
   head() {

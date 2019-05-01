@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <SelectServer/>
-  </div>
+  <SelectServer/>
 </template>
 
 <script>
