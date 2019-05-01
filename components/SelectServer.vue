@@ -31,7 +31,7 @@
             <img src="~/assets/marvel.svg" class="mt-3" alt="Login marvel" style="height:170px">
             <div class="card-body">
               <p class="card-text">A Marvel é o universo compartilhado onde ocorrem as histórias na maioria dos títulos de quadrinhos americanos e outras mídias publicadas pela Marvel Entertainment.</p>
-              <nuxt-link to="/marvel"
+              <nuxt-link to="/marvel/home"
                 class="btn btn-lg btn-block btn-danger"
                 name="auth" aria-label="Login">
                 Login Marvel
